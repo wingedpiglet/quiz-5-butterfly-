@@ -1,0 +1,76 @@
+import pygame
+pygame.init
+
+#constants for colors
+PURPLE = (150, 26, 217)
+YELLOW = (240, 201, 26)
+BRORANGE = (92, 47, 26)
+BLACK = (0, 0, 0)
+
+
+### class definition--------------------------------------------
+class butterfly:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        
+    def draw(self):
+        pygame.draw.circle(screen, (PURPLE), (self.xpos-15, self.ypos+15), 25) 
+        pygame.draw.circle(screen, (PURPLE), (self.xpos-20, self.ypos-20), 25)
+        pygame.draw.circle(screen, (PURPLE), (self.xpos+15, self.ypos-20), 25)
+        pygame.draw.circle(screen, (PURPLE), (self.xpos+20, self.ypos+15), 25)
+        pygame.draw.ellipse(screen, (YELLOW), (self.xpos-10, self.ypos-36, 20, 70))
+        pygame.draw.arc(screen, (BRORANGE), ( self.xpos-10, self.ypos-30,  19, 18), 3.14, 0,3)
+        pygame.draw.arc(screen, (BRORANGE), ( self.xpos-10, self.ypos-20,  19, 18), 3.14, 0,3)
+        pygame.draw.arc(screen, (BRORANGE), ( self.xpos-10, self.ypos-10,  19, 18), 3.14, 0,3)
+        pygame.draw.arc(screen, (BRORANGE), ( self.xpos-10, self.ypos-0,  19, 18), 3.14, 0,3)
+# end of class definition-----------------------------------------
+
+
+
+
+#stamp (aka instantiate) flowers
+butterfly1 = butterfly(200, 200)
+butterfly2 = butterfly(400, 300)
+butterfly3 = butterfly(600, 300)
+
+#creates game screen and caption
+screen = pygame.display.set_mode((800, 800))
+pygame.display.set_caption("butterfly")
+
+#game variables
+doExit = False #variable to quit out of game loop
+clock = pygame.time.Clock() #sets up a game clock to regulate game speed
+
+
+#BEGIN GAME LOOP######################################################
+while not doExit:
+   
+    clock.tick(60) #FPS (frames per second)
+   
+    #pygame's way of listening for events (key presses, mouse clicks, etc)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+           doExit = True #lets you quit program
+
+    #keyboard input-----------------------------------
+  
+     
+    #render section-----------------------------------
+ 
+
+    #draw class objects
+    butterfly1.draw()
+    butterfly2.draw()
+    butterfly3.draw()
+  
+
+    pygame.display.flip() #update graphics each game loop
+
+#END GAME LOOP#######################################################
+pygame.quit()
+
+           
+
+
+
